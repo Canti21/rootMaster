@@ -29,8 +29,6 @@
         align-items: center;
         gap: 10px;
         background: linear-gradient(135deg, #B71970, #01416D);
-        background-size: cover;
-        background-attachment: fixed;
         color: white;
         font-size: 2rem;
         padding: 0 2rem;
