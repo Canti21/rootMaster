@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<img src="/static/img/rootmaster-logo-w.svg" alt="RootMaster" class="logo">
+<div class="main-container">
+    <h1>Welcome</h1>
+    <h3>Please select your method</h3>
+    <div class="welcome-card">
+        <a href="/method/bisection" class="bisection-button">Bisection</a>
+        <a href="/method/newton" class="newton-button">Newton-Raphson</a>
+        <a href="/method/secant" class="secant-button">Secant</a>
+        <a href="/method/fixed-point" class="fixed-point-button">Fixed Point</a>
+        <a href="/method/muller" class="muller-button">Müller</a>
+    </div>
+</div>
+{% endblock %}

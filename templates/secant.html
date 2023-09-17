@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="main-container">
+    <h1>Secant</h1>
+    <form method="post">
+        <label for="funcion">Function:</label>
+        <input type="text" name="funcion" id="funcion" value="{{ request.form.get('funcion', '') }}" required>
+        
+        <label for="variable">Variable:</label>
+        <input type="text" name="variable" id="variable" value="{{ request.form.get('variable', '') }}" required>
+        
+        <label for="valor_a">P0 Value:</label>
+        <input type="text" name="valor_a" id="valor_a" value="{{ request.form.get('valor_a', '') }}" required>
+        
+        <label for="valor_b">P1 value:</label>
+        <input type="text" name="valor_b" id="valor_b" value="{{ request.form.get('valor_b', '') }}" required>
+        
+        <label for="precision">Decimal Presition:</label>
+        <input type="text" name="precision" id="precision" value="{{ request.form.get('precision', '') }}" required>
+
+        <label for="max_iterations">Max Iterations:</label>
+        <input type="text" name="max_iterations" id="max_iterations" value="{{ request.form.get('max_iterations', '') }}" required>
+        
+        <input type="submit" value="Calculate" class="secant-button">
+    </form>
+    
+    {% if resultado %}
+    <h2>Result:</h2>
+    <h3>{{ resultado }}</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="main-container">
+    <h1>Newton-Raphson</h1>
+    <form method="post">
+        <label for="funcion">Function:</label>
+        <input type="text" name="funcion" id="funcion" value="{{ request.form.get('funcion', '') }}" required>
+        
+        <label for="variable">Variable:</label>
+        <input type="text" name="variable" id="variable" value="{{ request.form.get('variable', '') }}" required>
+        
+        <label for="x_value">X0 Value:</label>
+        <input type="text" name="x_value" id="x_value" value="{{ request.form.get('x_value', '') }}" required>
+
+        <label for="precision">Decimal Precision:</label>
+        <input type="text" name="precision" id="precision" value="{{ request.form.get('precision', '') }}" required>
+        
+        <label for="max_iterations">Max Iterations:</label>
+        <input type="text" name="max_iterations" id="max_iterations" value="{{ request.form.get('max_iterations', '') }}" required>
+        
+        <input type="submit" value="Calculate" class="newton-button">
+    </form>
+    
+    {% if resultado %}
+    <h2>Result:</h2>
+    <h3>{{ resultado }}</p>
+    {% endif %}
+</div>
+{% endblock %}

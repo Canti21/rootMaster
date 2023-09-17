@@ -1,0 +1,361 @@
+    :root
+    {
+        --bisection: #001f66;
+        --newton: #0d652d;
+        --secant: #740f17;
+        --fixed-point: #500067;
+        --muller: #8b3600;
+    }
+
+    html
+    {
+        font-family: sans-serif, 'QuickSand';
+        font-size: 62.5%;
+    }
+
+    *
+    {
+        margin: 0;
+        padding: 0;
+    }
+
+    body
+    {
+        min-height: 100vh;
+        max-width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        background: linear-gradient(135deg, #B71970, #01416D);
+        background-size: cover;
+        background-attachment: fixed;
+        color: white;
+        font-size: 2rem;
+        padding: 0 2rem;
+    }
+
+    .darken
+    {
+        width: 100%;
+        height: calc(100%);
+        position: fixed;
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .inactive
+    {
+        display: none;
+    }
+
+    nav
+    {
+        position: relative;
+        width: calc(100vw - 20px);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        z-index: 1;
+    }
+
+    nav .nav-logo
+    {
+        font-size: 2.4rem;
+        height: 20px;
+        width: 100px;
+        display: inline-block;
+        background-image: url('/static/img/rootmaster-logo-w.svg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .burguer-menu
+    {
+        display: none;
+    }
+
+    .navbar
+    {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 120rem;
+        gap: 10rem;
+    }
+
+    .navbar .desktop-menu ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+    }
+
+    .navbar .desktop-menu ul li a
+    {
+        color: white;
+        text-decoration: none;
+        border: none;
+        border-radius: 8px;
+        padding: 5px 8px;
+        transition: all .1s ease-in-out;
+    }
+
+    .navbar .desktop-menu ul li a:hover
+    {
+        background-color: #292929;
+    }
+
+    .mobile-menu
+    {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.5);
+        width: 100%;
+        backdrop-filter: blur(20px);
+        top: 42px;
+        left: 0;
+        padding: 24px;
+    }
+
+    .mobile-menu a
+    {
+      text-decoration: none;
+      color: var(--black);
+      font-weight: bold;
+      /* margin-bottom: 24px; */
+    }
+
+    .mobile-menu ul
+    {
+      padding: 0;
+      margin: 24px 0 0;
+      list-style: none;
+    }
+    
+    .mobile-menu ul li
+    {
+      margin-bottom: 24px;
+    }
+
+    .content
+    {
+        min-width: 100vw;
+        min-height: calc(100vh - 45px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .content .logo
+    {
+        height: 12rem;
+        margin-bottom: 2rem;
+    }
+
+    .welcome-card
+    {
+        display: grid;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .welcome-card a
+    {
+        text-decoration: none;
+        font-size: 2.4rem;
+        width: calc(100% - 16px);
+        height: 28px;
+        padding: 8px;
+        color: white;
+        text-align: center;
+        margin-top: 10px;
+        border-radius: 5px;
+        border: 1px solid black;
+        transition: all .1s ease-in-out;
+    }
+
+    .welcome-card a:hover
+    {
+        transform: scale(1.1);
+    }
+
+    .main-container
+    {
+        background: rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        border-radius: 20px;
+        border: 1px solid rgb(37, 37, 37);
+        max-width: 40rem;
+    }
+
+    .main-container h1,
+    .main-container h2
+    {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+
+    .main-container h3
+    {
+        text-align: center;
+    }
+
+    .main-container input[type="submit"]
+    {
+        transition: all .1s ease-in-out;
+    }
+
+    .main-container input[type="submit"]:hover
+    {
+        cursor: pointer;
+    }
+
+    .bisection-button
+    {
+        background-color: var(--bisection);
+    }
+
+    .newton-button
+    {
+        background-color: var(--newton);
+    }
+
+    .secant-button
+    {
+        background-color: var(--secant);
+    }
+
+    .fixed-point-button
+    {
+        background-color: var(--fixed-point);
+    }
+
+    .muller-button
+    {
+        background-color: var(--muller);
+    }
+
+    form
+    {
+        display: grid;
+        font-size: 2rem;
+    }
+
+    form > input[type="text"]
+    {
+        margin-bottom: 12px;
+        margin-top: 4px;
+        height: 16px;
+        padding: 10px 0 8px 8px;
+        background-color: rgba(200, 200, 200, 0.1);
+        border: 1px solid #3a3a3a;
+        border-radius: 0.5rem;
+        font-size: 1.8rem;
+        color: white;
+    }
+
+    form > input[type="submit"]
+    {
+        height: 40px;
+        font-size: 1.8rem;
+        border-radius: 4px;
+        margin: 10px 0;
+        border: none;
+        color: white;
+    }
+
+    .table-container
+    {
+        display: flex;
+        justify-content: center;
+    }
+
+    table
+    {
+        margin-top: 20px;
+        margin-bottom: 6rem;
+        border-collapse: collapse;
+    }
+
+    td, th
+    {
+        border: 1px solid white;
+        padding: 10px;
+        text-align: center;
+    }
+
+    td:nth-child(5),
+    td:nth-child(6),
+    td:nth-child(7)
+    {
+        text-align: center;
+    }
+
+    @media (max-width: 724px)
+    {
+        .main-container
+        {
+            margin-top: 0;
+        }
+
+        .navbar .desktop-menu ul
+        {
+            gap: 8px;
+        }
+    }
+
+    @media (max-width: 700px)
+    {
+        .navbar
+        {
+            gap: 0;
+        }
+    }
+
+    @media (max-width: 580px)
+    {
+        .burguer-menu
+        {
+            display: block;
+            cursor: pointer;
+            transform: rotate(180deg);
+        }
+
+        .desktop-menu
+        {
+            display: none;
+        }
+
+        nav
+        {
+            justify-content: space-between;
+        }
+
+        .content .logo
+        {
+            width: 90%;
+            margin-bottom: 2rem;
+        }
+    }
+
+    @media (max-width: 380px)
+    {
+        .main-container
+        {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-container h3,
+        .main-container h1
+        {
+            width: 210px;
+        }
+    }

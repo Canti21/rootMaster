@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="main-container">
+    <h1>Müller</h1>
+    <form method="post">
+        <label for="funcion">Function:</label>
+        <input type="text" name="funcion" id="funcion" value="{{ request.form.get('funcion', '') }}" required>
+        
+        <label for="variable">Variable:</label>
+        <input type="text" name="variable" id="variable" value="{{ request.form.get('variable', '') }}" required>
+        
+        <label for="x0_value">X0 Value:</label>
+        <input type="text" name="x0_value" id="x0_value" value="{{ request.form.get('x0_value', '') }}" required>
+
+        <label for="x1_value">X1 Value:</label>
+        <input type="text" name="x1_value" id="x1_value" value="{{ request.form.get('x1_value', '') }}" required>
+
+        <label for="x2_value">X2 Value:</label>
+        <input type="text" name="x2_value" id="x2_value" value="{{ request.form.get('x2_value', '') }}" required>
+
+        <label for="precision">Decimal Precision:</label>
+        <input type="text" name="precision" id="precision" value="{{ request.form.get('precision', '') }}" required>
+        
+        <label for="max_iterations">Max Iterations:</label>
+        <input type="text" name="max_iterations" id="max_iterations" value="{{ request.form.get('max_iterations', '') }}" required>
+        
+        <input type="submit" value="Calculate" class="muller-button">
+    </form>
+    
+    {% if resultado %}
+    <h2>Result:</h2>
+    <h3>{{ resultado }}</p>
+    {% endif %}
+</div>
+{% block iteration_table %}
+{% if iterations %}
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>k</th>
+                <th>xk</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for iteration in iterations %}
+            <tr>
+                <td>{{ iteration.iteration }}</td>
+                <td>{{ iteration.xk }}</td>
+                <!-- ... (otros datos de iteración) ... -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endif %}
+{% endblock %}
+{% endblock %}
