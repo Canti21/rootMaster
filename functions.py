@@ -1,7 +1,9 @@
 import sympy as sp
+from sympy import Abs
 
 MAX_IT_REACHED_MSG = 'Method failed after reaching max iterations'
 DIVERG_MSG = "Diverge"
+ZERO_DIV = "Error: Zero Division"
 
 def newton_raphson(function, variable, x_value, tolerancy, max_iterations):
     iterations = []
@@ -16,17 +18,19 @@ def newton_raphson(function, variable, x_value, tolerancy, max_iterations):
     while i < max_iterations:
         fx = evaluate(function, variable, p)
         dfx = evaluate(df, variable, p)
+        if dfx == 0:
+            return iterations, ZERO_DIV
         np = p - (fx / dfx)
         iteration_data = {
             'iteration': i,
             'xk': np,
         }
         iterations.append(iteration_data)
-        if abs(np - p) < tolerancy:
-            return p
+        if Abs(np - p) < tolerancy:
+            return iterations, p
         i = i + 1
         p = np
-    return 'Method failed after reaching max iterations'
+    return iterations, MAX_IT_REACHED_MSG
 
 def bisection(function, variable, a_value, b_value, tolerancy, max_iterations):
     iterations = []
