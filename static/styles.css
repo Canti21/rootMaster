@@ -11,6 +11,7 @@ html
 {
     font-family: sans-serif, 'QuickSand';
     font-size: 62.5%;
+    position: relative;
 }
 
 *
@@ -137,12 +138,12 @@ nav .nav-logo
 
 .content
 {
-    min-height: calc(100vh - 6.8rem);
+    min-height: calc(100vh - 5rem);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+    margin-bottom: 5rem;
 }
 
 .content .logo
@@ -293,8 +294,11 @@ td:nth-child(7)
 
 footer
 {
+    position: absolute;
     width: 100%;
     height: 1.8rem;
+    margin: 2rem 0;
+    bottom: 0;
 }
 
 .attribution
