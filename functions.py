@@ -1,13 +1,27 @@
 import sympy as sp
 
+MAX_IT_REACHED_MSG = 'Method failed after reaching max iterations'
+DIVERG_MSG = "Diverge"
+
 def newton_raphson(function, variable, x_value, tolerancy, max_iterations):
+    iterations = []
     i = 0
     p = x_value
+    iteration_data = {
+        'iteration': 0,
+        'xk': p,
+    }
+    iterations.append(iteration_data)
     df = sp.diff(function, variable)
     while i < max_iterations:
         fx = evaluate(function, variable, p)
         dfx = evaluate(df, variable, p)
         np = p - (fx / dfx)
+        iteration_data = {
+            'iteration': i,
+            'xk': np,
+        }
+        iterations.append(iteration_data)
         if abs(np - p) < tolerancy:
             return p
         i = i + 1
@@ -26,21 +40,6 @@ def bisection(function, variable, a_value, b_value, tolerancy, max_iterations):
         fp = evaluate(function, variable, p)
 
         # For table generation
-
-        if evaluate(function, variable, a) < 0:
-            fa = '-'
-        else:
-            fa = '+'
-
-        if evaluate(function, variable, b) < 0:
-            fb = '-'
-        else:
-            fb = '+'
-
-        if evaluate(function, variable, p) < 0:
-            fx = '-'
-        else:
-            fx = '+'
 
         iteration_data = {
             'iteration': i,
@@ -61,26 +60,61 @@ def bisection(function, variable, a_value, b_value, tolerancy, max_iterations):
         else:
             b = p
     iterations = None
-    p = 'Failed after reaching max iterations'
-    return iterations, p
+    return iterations, MAX_IT_REACHED_MSG
 
 def secant(function, variable, a_value, b_value, tolerancy, max_iterations):
     iterations = []
     i = 2
     p0 = a_value
     p1 = b_value
+    iteration_data = {
+        'iteration': 0,
+        'xk': p0,
+    }
+    iterations.append(iteration_data)
+    iteration_data = {
+        'iteration': 1,
+        'xk': p1,
+    }
+    iterations.append(iteration_data)
     q0 = evaluate(function, variable, p0)
     q1 = evaluate(function, variable, p1)
     while i <= max_iterations:
         p = p1 - q1 * (p1 - p0)/(q1 - q0)
+        iteration_data = {
+            'iteration': i,
+            'xk': p,
+        }
+        iterations.append(iteration_data)
         if abs(p - p1) < tolerancy:
-            return p
+            return iterations, p
         i = i + 1
         p0 = p1
         q0 = q1
         p1 = p
         q1 = evaluate(function, variable, p)
-    return 'Method failed after reaching max iterations'
+    return iterations, MAX_IT_REACHED_MSG
+
+def fixed_point(function, variable, p0_value, tolerancy, max_iterations):
+    iterations = []
+    i = 1
+    iteration_data = {
+        'iteration': 0,
+        'xk': p0_value,
+    }
+    iterations.append(iteration_data)
+    while i < max_iterations:
+        p = evaluate(function, variable, p0_value)
+        iteration_data = {
+            'iteration': i,
+            'xk': p,
+        }
+        iterations.append(iteration_data)
+        if abs(p - p0_value) < tolerancy:
+            return iterations, p
+        i = i + 1
+        p0_value = p
+    return iterations, MAX_IT_REACHED_MSG
 
 def muller(function, variable, p0, p1, p2, tolerancy, max_iterations):
     iterations = []
@@ -137,7 +171,7 @@ def muller(function, variable, p0, p1, p2, tolerancy, max_iterations):
         d2 = (fp2 - fp1)/h2
         d = (d2 - d1)/(h2 + h1)
         i = i + 1
-    return 'Method failed after reaching max iterations'
+    return iterations, MAX_IT_REACHED_MSG
 
 def calculateTolerancy(presition):
     expr = "(1/2)*(10**(-k))"

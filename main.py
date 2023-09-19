@@ -28,6 +28,7 @@ def bisection_page():
 
 @app.route('/method/newton', methods=['GET', 'POST'])
 def newton_page():
+    iterations = []
     resultado = None
     if request.method == 'POST':
         function = request.form['funcion']
@@ -37,12 +38,13 @@ def newton_page():
         tolerancy = calculateTolerancy(precision)
         max_iterations = float(request.form['max_iterations'])
 
-        resultado = newton_raphson(function, variable, x_value, tolerancy, max_iterations)
+        iterations, resultado = newton_raphson(function, variable, x_value, tolerancy, max_iterations)
 
-    return render_template('newraph.html', resultado=resultado)
+    return render_template('newraph.html', resultado=resultado, iterations=iterations)
 
 @app.route('/method/secant', methods=['GET', 'POST'])
 def secant_page():
+    iterations = []
     resultado = None
     if request.method == 'POST':
         function = request.form['funcion']
@@ -53,9 +55,25 @@ def secant_page():
         max_iterations = float(request.form['max_iterations'])
         tolerancy = calculateTolerancy(precision)
 
-        resultado = secant(function, variable, a_value, b_value, tolerancy, max_iterations)
+        iterations, resultado = secant(function, variable, a_value, b_value, tolerancy, max_iterations)
 
-    return render_template('secant.html', resultado=resultado)
+    return render_template('secant.html', resultado=resultado, iterations=iterations)
+
+@app.route('/method/fixed-point', methods=['GET', 'POST'])
+def fixed_point_page():
+    iterations = []
+    resultado = None
+    if request.method == 'POST':
+        function = request.form['funcion']
+        variable = request.form['variable']
+        p0 = float(request.form['p0-value'])
+        precision = float(request.form['precision'])
+        max_iterations = float(request.form['max_iterations'])
+        tolerancy = calculateTolerancy(precision)
+
+        iterations, resultado = fixed_point(function, variable, p0, tolerancy, max_iterations)
+
+    return render_template('fixed-point.html', resultado=resultado, iterations=iterations)
 
 @app.route('/method/muller', methods=['GET', 'POST'])
 def muller_page():
