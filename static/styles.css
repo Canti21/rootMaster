@@ -5,6 +5,7 @@
     --secant: #740f17;
     --fixed-point: #500067;
     --muller: #8b3600;
+    --error: rgb(255, 62, 62);
 }
 
 html
@@ -242,9 +243,18 @@ form
     font-size: 2rem;
 }
 
+form > label
+{
+    margin-top: 12px;
+}
+
+form > label:first-child
+{
+    margin-top: 0;
+}
+
 form > input[type="text"]
 {
-    margin-bottom: 12px;
     margin-top: 4px;
     height: 16px;
     padding: 10px 0 8px 8px;
@@ -263,6 +273,13 @@ form > input[type="submit"]
     margin: 10px 0;
     border: none;
     color: white;
+}
+
+form > span
+{
+    font-size: 1.4rem;
+    margin-top: 0.6rem;
+    color: var(--error);
 }
 
 .table-container
@@ -317,6 +334,12 @@ footer
 .attribution a:hover
 {
     font-weight: bold;
+}
+
+.error-input
+{
+    border: 1px solid var(--error) !important;
+    background-color: rgba(200, 32, 32, 0.1) !important;
 }
 
 @media (max-width: 724px)

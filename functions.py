@@ -84,6 +84,8 @@ def secant(function, variable, a_value, b_value, tolerancy, max_iterations):
     q0 = evaluate(function, variable, p0)
     q1 = evaluate(function, variable, p1)
     while i <= max_iterations:
+        if (q1 - q0) == 0:
+            return iterations, ZERO_DIV
         p = p1 - q1 * (p1 - p0)/(q1 - q0)
         iteration_data = {
             'iteration': i,
@@ -124,6 +126,8 @@ def muller(function, variable, p0, p1, p2, tolerancy, max_iterations):
     iterations = []
     h1 = p1 - p0
     h2 = p2 - p1
+    if h1 == 0 or h2 == 0:
+        return None, ZERO_DIV
     fp0 = evaluate(function, variable, p0)
     fp1 = evaluate(function, variable, p1)
     fp2 = evaluate(function, variable, p2)

@@ -10,25 +10,32 @@
     <h1>Müller</h1>
     <form method="post">
         <label for="funcion">Function:</label>
-        <input type="text" name="funcion" id="funcion" value="{{ request.form.get('funcion', '') }}" required>
+        <input type="text" name="funcion" id="funcion" class="input-field" value="{{ request.form.get('funcion', '') }}" placeholder="x**2 - E**(x/2)" required>
+        <span id="error_message_id" class="error inactive">Please enter a valid input</span>
         
         <label for="variable">Variable:</label>
-        <input type="text" name="variable" id="variable" value="{{ request.form.get('variable', '') }}" required>
+        <input type="text" name="variable" id="variable" class="input-field" value="{{ request.form.get('variable', '') }}" pattern="[a-zA-Z]{1}" required>
+        <span id="error_message_id" class="error inactive">Please enter a single letter</span>
         
         <label for="x0_value">X0 Value:</label>
-        <input type="text" name="x0_value" id="x0_value" value="{{ request.form.get('x0_value', '') }}" required>
+        <input type="text" name="x0_value" id="x0_value" class="input-field" value="{{ request.form.get('x0_value', '') }}" pattern="-?\d+(\.\d+)?" required>
+        <span id="error_message_id" class="error inactive">Please enter a valid number</span>
 
         <label for="x1_value">X1 Value:</label>
-        <input type="text" name="x1_value" id="x1_value" value="{{ request.form.get('x1_value', '') }}" required>
+        <input type="text" name="x1_value" id="x1_value" class="input-field" value="{{ request.form.get('x1_value', '') }}" pattern="-?\d+(\.\d+)?" required>
+        <span id="error_message_id" class="error inactive">Please enter a valid number</span>
 
         <label for="x2_value">X2 Value:</label>
-        <input type="text" name="x2_value" id="x2_value" value="{{ request.form.get('x2_value', '') }}" required>
+        <input type="text" name="x2_value" id="x2_value" class="input-field" value="{{ request.form.get('x2_value', '') }}" pattern="-?\d+(\.\d+)?" required>
+        <span id="error_message_id" class="error inactive">Please enter a valid number</span>
 
         <label for="precision">Decimal Precision:</label>
-        <input type="text" name="precision" id="precision" value="{{ request.form.get('precision', '') }}" required>
+        <input type="text" name="precision" id="precision" class="input-field" value="{{ request.form.get('precision', '') }}" pattern="\d+" required>
+        <span id="error_message_id" class="error inactive">Please enter a valid number</span>
         
         <label for="max_iterations">Max Iterations:</label>
-        <input type="text" name="max_iterations" id="max_iterations" value="{{ request.form.get('max_iterations', '') }}" required>
+        <input type="text" name="max_iterations" id="max_iterations" class="input-field" value="{{ request.form.get('max_iterations', '') }}" pattern="\d+" required>
+        <span id="error_message_id" class="error inactive">Please enter a valid number</span>
         
         <input type="submit" value="Calculate" class="muller-button">
     </form>

@@ -10,22 +10,28 @@
     <h1>Secant</h1>
     <form method="post">
         <label for="funcion">Function:</label>
-        <input type="text" name="funcion" id="funcion" value="{{ request.form.get('funcion', '') }}" required>
+        <input type="text" name="funcion" id="funcion" class="input-field" value="{{ request.form.get('funcion', '') }}" placeholder="x**2 - E**(x/2)" required>
+        <span id="error_message_id" class="error inactive">Please enter a valid input</span>
         
         <label for="variable">Variable:</label>
-        <input type="text" name="variable" id="variable" value="{{ request.form.get('variable', '') }}" required>
+        <input type="text" name="variable" id="variable" class="input-field" value="{{ request.form.get('variable', '') }}" pattern="[a-zA-Z]{1}" required>
+        <span id="error_message_id" class="error inactive">Please enter a single letter</span>
         
         <label for="valor_a">P0 Value:</label>
-        <input type="text" name="valor_a" id="valor_a" value="{{ request.form.get('valor_a', '') }}" required>
+        <input type="text" name="valor_a" id="valor_a" class="input-field" value="{{ request.form.get('valor_a', '') }}" pattern="-?\d+(\.\d+)?" required>
+        <span id="error_message_id" class="error inactive">Please enter a valid number</span>
         
         <label for="valor_b">P1 value:</label>
-        <input type="text" name="valor_b" id="valor_b" value="{{ request.form.get('valor_b', '') }}" required>
+        <input type="text" name="valor_b" id="valor_b" class="input-field" value="{{ request.form.get('valor_b', '') }}" pattern="-?\d+(\.\d+)?" required>
+        <span id="error_message_id" class="error inactive">Please enter a valid number</span>
         
         <label for="precision">Decimal Presition:</label>
-        <input type="text" name="precision" id="precision" value="{{ request.form.get('precision', '') }}" required>
+        <input type="text" name="precision" id="precision" class="input-field" value="{{ request.form.get('precision', '') }}" pattern="\d+" required>
+        <span id="error_message_id" class="error inactive">Please enter a valid number</span>
 
         <label for="max_iterations">Max Iterations:</label>
-        <input type="text" name="max_iterations" id="max_iterations" value="{{ request.form.get('max_iterations', '') }}" required>
+        <input type="text" name="max_iterations" id="max_iterations" class="input-field" value="{{ request.form.get('max_iterations', '') }}" pattern="\d+" required>
+        <span id="error_message_id" class="error inactive">Please enter a valid number</span>
         
         <input type="submit" value="Calculate" class="secant-button">
     </form>

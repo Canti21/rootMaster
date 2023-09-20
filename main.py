@@ -66,7 +66,7 @@ def fixed_point_page():
     if request.method == 'POST':
         function = request.form['funcion']
         variable = request.form['variable']
-        p0 = float(request.form['p0-value'])
+        p0 = float(request.form['p0_value'])
         precision = float(request.form['precision'])
         max_iterations = float(request.form['max_iterations'])
         tolerancy = calculateTolerancy(precision)

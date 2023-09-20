@@ -10,19 +10,24 @@
     <h1>Newton-Raphson</h1>
     <form method="post">
         <label for="funcion">Function:</label>
-        <input type="text" name="funcion" id="funcion" value="{{ request.form.get('funcion', '') }}" required>
+        <input type="text" name="funcion" class="input-field" id="funcion" value="{{ request.form.get('funcion', '') }}" placeholder="x**2 - E**(x/2)" required>
+        <span id="error_message_id" class="error inactive">Please enter a valid input</span>
         
         <label for="variable">Variable:</label>
-        <input type="text" name="variable" id="variable" value="{{ request.form.get('variable', '') }}" required>
+        <input type="text" name="variable" class="input-field" id="variable" value="{{ request.form.get('variable', '') }}" pattern="[a-zA-Z]{1}" required>
+        <span id="error_message_id" class="error inactive">Please enter a single letter</span>
         
         <label for="x_value">X0 Value:</label>
-        <input type="text" name="x_value" id="x_value" value="{{ request.form.get('x_value', '') }}" required>
+        <input type="text" name="x_value" class="input-field" id="x_value" value="{{ request.form.get('x_value', '') }}" pattern="-?\d+(\.\d+)?" required>
+        <span id="error_message_id" class="error inactive">Please enter a valid number</span>
 
         <label for="precision">Decimal Precision:</label>
-        <input type="text" name="precision" id="precision" value="{{ request.form.get('precision', '') }}" required>
+        <input type="text" name="precision" class="input-field" id="precision" value="{{ request.form.get('precision', '') }}" pattern="\d+" required>
+        <span id="error_message_id" class="error inactive">Please enter a valid number</span>
         
         <label for="max_iterations">Max Iterations:</label>
-        <input type="text" name="max_iterations" id="max_iterations" value="{{ request.form.get('max_iterations', '') }}" required>
+        <input type="text" name="max_iterations" class="input-field" id="max_iterations" value="{{ request.form.get('max_iterations', '') }}" pattern="\d+" required>
+        <span id="error_message_id" class="error inactive">Please enter a valid number</span>
         
         <input type="submit" value="Calculate" class="newton-button">
     </form>
