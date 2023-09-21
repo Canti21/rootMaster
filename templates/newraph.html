@@ -40,23 +40,24 @@
 
 {% block iteration_table %}
 {% if iterations %}
-<table>
-    <thead>
-        <tr>
-            <th>k</th>
-            <th>Xk</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for iteration in iterations %}
-        <tr>
-            <td>{{ iteration.iteration }}</td>
-            <td>{{ iteration.xk }}</td>
-            <!-- ... (otros datos de iteración) ... -->
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>k</th>
+                <th>Xk</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for iteration in iterations %}
+            <tr>
+                <td>{{ iteration.iteration }}</td>
+                <td>{{ iteration.xk }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 
 {% endif %}
 {% endblock %}

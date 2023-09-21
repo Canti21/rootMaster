@@ -148,7 +148,7 @@ nav .nav-logo
 .wrapper
 {
     padding: 2rem;
-    min-height: calc(100vh - 8rem);
+    min-height: calc(100vh - 10rem);
     display: flex;
     justify-content: center;
 }
@@ -305,16 +305,30 @@ form > span
     color: var(--error);
 }
 
+.result
+{
+    max-width: 100%;
+    word-wrap: break-word;
+}
+
 .table-container
 {
-    display: flex;
-    justify-content: center;
+    margin-top: 2rem;
+    max-width: calc(90vw - 2.4rem);
+    min-width: 90%;
+    overflow-x: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(20px);
+    border-radius: 1rem;
+    padding: 1.2rem;
 }
 
 table
 {
-    margin-top: 20px;
+    margin: 0 auto;
     border-collapse: collapse;
+    max-width: 100%;
+    overflow: scroll;
 }
 
 td, th
@@ -324,11 +338,10 @@ td, th
     text-align: center;
 }
 
-td:nth-child(5),
-td:nth-child(6),
-td:nth-child(7)
+td
 {
-    text-align: center;
+    word-wrap: break-word;
+    white-space: nowrap; /* Prevent text from wrapping */
 }
 
 footer
