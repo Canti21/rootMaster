@@ -12,6 +12,7 @@ def index():
 @app.route('/method/bisection', methods=['GET', 'POST'])
 def bisection_page():
     iterations = []
+    alert = None
     resultado = None
     if request.method == 'POST':
         function = request.form['funcion']
@@ -22,13 +23,14 @@ def bisection_page():
         max_iterations = float(request.form['max_iterations'])
         tolerancy = calculateTolerancy(precision)
 
-        iterations, resultado = bisection(function, variable, valor_a, valor_b, tolerancy, max_iterations)
+        iterations, resultado, alert = bisection(function, variable, valor_a, valor_b, tolerancy, max_iterations)
 
-    return render_template('bisection.html', resultado=resultado, iterations=iterations)
+    return render_template('bisection.html', resultado=resultado, iterations=iterations, alert=alert)
 
 @app.route('/method/newton', methods=['GET', 'POST'])
 def newton_page():
     iterations = []
+    alert = None
     resultado = None
     if request.method == 'POST':
         function = request.form['funcion']
@@ -38,13 +40,14 @@ def newton_page():
         tolerancy = calculateTolerancy(precision)
         max_iterations = float(request.form['max_iterations'])
 
-        iterations, resultado = newton_raphson(function, variable, x_value, tolerancy, max_iterations)
+        iterations, resultado, alert = newton_raphson(function, variable, x_value, tolerancy, max_iterations)
 
-    return render_template('newraph.html', resultado=resultado, iterations=iterations)
+    return render_template('newraph.html', resultado=resultado, iterations=iterations, alert=alert)
 
 @app.route('/method/secant', methods=['GET', 'POST'])
 def secant_page():
     iterations = []
+    alert = None
     resultado = None
     if request.method == 'POST':
         function = request.form['funcion']
@@ -55,13 +58,14 @@ def secant_page():
         max_iterations = float(request.form['max_iterations'])
         tolerancy = calculateTolerancy(precision)
 
-        iterations, resultado = secant(function, variable, a_value, b_value, tolerancy, max_iterations)
+        iterations, resultado, alert = secant(function, variable, a_value, b_value, tolerancy, max_iterations)
 
-    return render_template('secant.html', resultado=resultado, iterations=iterations)
+    return render_template('secant.html', resultado=resultado, iterations=iterations, alert=alert)
 
 @app.route('/method/fixed-point', methods=['GET', 'POST'])
 def fixed_point_page():
     iterations = []
+    alert = None
     resultado = None
     if request.method == 'POST':
         function = request.form['funcion']
@@ -71,13 +75,14 @@ def fixed_point_page():
         max_iterations = float(request.form['max_iterations'])
         tolerancy = calculateTolerancy(precision)
 
-        iterations, resultado = fixed_point(function, variable, p0, tolerancy, max_iterations)
+        iterations, resultado, alert = fixed_point(function, variable, p0, tolerancy, max_iterations)
 
-    return render_template('fixed-point.html', resultado=resultado, iterations=iterations)
+    return render_template('fixed-point.html', resultado=resultado, iterations=iterations, alert=alert)
 
 @app.route('/method/muller', methods=['GET', 'POST'])
 def muller_page():
     iterations = []
+    alert = None
     resultado = None
     if request.method == 'POST':
         function = request.form['funcion']
@@ -89,9 +94,9 @@ def muller_page():
         max_iterations = float(request.form['max_iterations'])
         tolerancy = calculateTolerancy(precision)
 
-        iterations, resultado = muller(function, variable, x0_value, x1_value, x2_value, tolerancy, max_iterations)
+        iterations, resultado, alert = muller(function, variable, x0_value, x1_value, x2_value, tolerancy, max_iterations)
 
-    return render_template('muller.html', resultado=resultado, iterations=iterations)
+    return render_template('muller.html', resultado=resultado, iterations=iterations, alert=alert)
 
 
 if __name__ == '__main__':

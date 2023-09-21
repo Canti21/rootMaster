@@ -40,11 +40,18 @@
         <img src="/static/img/icon_menu.svg" alt="menu" class="burguer-menu">
     </nav>
     <div class="darken inactive"></div>
-    <div class="content">
-        {% block content %}
-        {% block iteration_table %}
-        {% endblock %}
-        {% endblock %}
+    {% if alert %}
+        <div class="alert">{{ alert }}</div>
+        <div class="wrapper-alert">
+    {% else %}
+        <div class="wrapper">
+    {% endif %}
+        <div class="content">
+            {% block content %}
+            {% block iteration_table %}
+            {% endblock %}
+            {% endblock %}
+        </div>
     </div>
     <footer>
         <div class="attribution">

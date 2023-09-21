@@ -1,9 +1,11 @@
 import sympy as sp
 from sympy import Abs
+from sympy import N
 
-MAX_IT_REACHED_MSG = 'Method failed after reaching max iterations'
+MAX_IT_REACHED_MSG = 'Warning: Method failed after reaching max iterations. Result is not precise'
 DIVERG_MSG = "Diverge"
-ZERO_DIV = "Error: Zero Division"
+ZERO_DIV = "Warning: Stoped after encounter a division by zero. Result may not be precise"
+EPSILON = "Warning: Machine epsilon achieved. Execution stopped"
 
 def newton_raphson(function, variable, x_value, tolerancy, max_iterations):
     iterations = []
@@ -19,18 +21,20 @@ def newton_raphson(function, variable, x_value, tolerancy, max_iterations):
         fx = evaluate(function, variable, p)
         dfx = evaluate(df, variable, p)
         if dfx == 0:
-            return iterations, ZERO_DIV
+            return iterations, p, ZERO_DIV
         np = p - (fx / dfx)
         iteration_data = {
             'iteration': i,
             'xk': np,
         }
         iterations.append(iteration_data)
+        if (np != 0 and ((1 + abs(np)) == 1)):
+            return iterations, p, EPSILON
         if Abs(np - p) < tolerancy:
-            return iterations, p
+            return iterations, p, None
         i = i + 1
         p = np
-    return iterations, MAX_IT_REACHED_MSG
+    return iterations, p, MAX_IT_REACHED_MSG
 
 def bisection(function, variable, a_value, b_value, tolerancy, max_iterations):
     iterations = []
@@ -54,8 +58,10 @@ def bisection(function, variable, a_value, b_value, tolerancy, max_iterations):
 
         # End of table generation
 
+        if (p != 0 and ((1 + abs(p)) == 1)):
+            return iterations, p, EPSILON
         if (fp == 0) or ((abs(b - a)/2) < tol):
-            return iterations, p
+            return iterations, p, None
         i = i+1
         fa = evaluate(function, variable, a)
         if (fa.evalf() * fp.evalf()) > 0:
@@ -63,8 +69,7 @@ def bisection(function, variable, a_value, b_value, tolerancy, max_iterations):
             fa = fp
         else:
             b = p
-    iterations = None
-    return iterations, MAX_IT_REACHED_MSG
+    return iterations, p, MAX_IT_REACHED_MSG
 
 def secant(function, variable, a_value, b_value, tolerancy, max_iterations):
     iterations = []
@@ -85,15 +90,17 @@ def secant(function, variable, a_value, b_value, tolerancy, max_iterations):
     q1 = evaluate(function, variable, p1)
     while i <= max_iterations:
         if (q1 - q0) == 0:
-            return iterations, ZERO_DIV
+            return iterations, p, ZERO_DIV
         p = p1 - q1 * (p1 - p0)/(q1 - q0)
         iteration_data = {
             'iteration': i,
             'xk': p,
         }
         iterations.append(iteration_data)
+        if (p != 0 and ((1 + abs(p)) == 1)):
+            return iterations, p, EPSILON
         if abs(p - p1) < tolerancy:
-            return iterations, p
+            return iterations, p, None
         i = i + 1
         p0 = p1
         q0 = q1
@@ -116,18 +123,20 @@ def fixed_point(function, variable, p0_value, tolerancy, max_iterations):
             'xk': p,
         }
         iterations.append(iteration_data)
+        if (p != 0 and ((1 + abs(p)) == 1)):
+            return iterations, p, EPSILON
         if abs(p - p0_value) < tolerancy:
-            return iterations, p
+            return iterations, p, None
         i = i + 1
         p0_value = p
-    return iterations, MAX_IT_REACHED_MSG
+    return iterations, p, MAX_IT_REACHED_MSG
 
 def muller(function, variable, p0, p1, p2, tolerancy, max_iterations):
     iterations = []
     h1 = p1 - p0
     h2 = p2 - p1
     if h1 == 0 or h2 == 0:
-        return None, ZERO_DIV
+        return None, 'Error', ZERO_DIV
     fp0 = evaluate(function, variable, p0)
     fp1 = evaluate(function, variable, p1)
     fp2 = evaluate(function, variable, p2)
@@ -165,8 +174,10 @@ def muller(function, variable, p0, p1, p2, tolerancy, max_iterations):
         }
 
         iterations.append(iteration_data)
+        if (h != 0 and ((1 + abs(h)) == 1)):
+            return iterations, p, EPSILON
         if abs(h) < tolerancy:
-            return iterations, p
+            return iterations, p, None
         p0 = p1
         p1 = p2
         p2 = p
@@ -179,7 +190,7 @@ def muller(function, variable, p0, p1, p2, tolerancy, max_iterations):
         d2 = (fp2 - fp1)/h2
         d = (d2 - d1)/(h2 + h1)
         i = i + 1
-    return iterations, MAX_IT_REACHED_MSG
+    return iterations, p, MAX_IT_REACHED_MSG
 
 def calculateTolerancy(presition):
     expr = "(1/2)*(10**(-k))"
