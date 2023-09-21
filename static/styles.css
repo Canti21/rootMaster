@@ -315,7 +315,6 @@ form > span
 {
     margin-top: 2rem;
     max-width: calc(90vw - 2.4rem);
-    min-width: 90%;
     overflow-x: auto;
     background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(20px);
