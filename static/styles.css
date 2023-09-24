@@ -233,7 +233,8 @@ nav .nav-logo
     justify-content: center;
 }
 
-.welcome-card a
+.welcome-card a,
+.root-button
 {
     text-decoration: none;
     font-size: 2.4rem;
@@ -251,6 +252,24 @@ nav .nav-logo
 .welcome-card a:hover
 {
     transform: scale(1.1);
+}
+
+.page404-title
+{
+    font-size: 4rem;
+    text-align: center;
+}
+
+.page404-paragraph
+{
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.page404-paragraph a
+{
+    color: white;
+    text-align: center;
 }
 
 .main-container
@@ -308,6 +327,11 @@ nav .nav-logo
 .muller-button
 {
     background-color: var(--muller);
+}
+
+.root-button
+{
+    background: linear-gradient(135deg, #550e35, #002137);
 }
 
 form
