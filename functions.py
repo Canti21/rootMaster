@@ -214,4 +214,13 @@ def evaluate(function, variable, value):
     return resultado
 
 def extend(number):
-    return np.format_float_positional(number, trim='-')
+    if isinstance(number, complex) or sp.I in sp.sympify(number).atoms():
+        real_part = np.format_float_positional(sp.re(number), trim='-')
+        imag_coeff = sp.im(number)
+        imag_part = np.format_float_positional(abs(imag_coeff), trim='-')
+
+        # Determine the sign of the imaginary part
+        sign = '-' if imag_coeff < 0 else '+'
+        return f"{real_part} {sign} {imag_part}i"
+    else:
+        return np.format_float_positional(number, trim='-')
