@@ -5,6 +5,7 @@
 ## Table of Contents
 
 - [Description](#description)
+- [Changelog](#changelog)
 - [Server Performance Notice](#server-performance-notice)
 - [Usage](#usage)
 - [Contributing](#contributing)
@@ -14,6 +15,10 @@
 ## Description
 
 RootMaster is a web application that helps you find the roots of mathematical functions using various numerical methods. Whether you need to solve equations using the bisection method, Newton-Raphson method, or Muller's method, this calculator has you covered.
+
+## Changelog
+
+Check out our [Changelog](./CHANGELOG.md) to see what's new and improved in each release.
 
 ## Server Performance Notice
 
