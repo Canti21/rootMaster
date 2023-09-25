@@ -1,5 +1,17 @@
 # ChangeLog
 
+## [Beta 1.3] - 2023-09-25
+
+### Added
+- **Mathe**: Library for operating with complex numbers
+
+### Changed
+- Functions modified to accept Mathe library.
+
+### Fixed
+- Issue where complex numbers wheren't properly operated.
+- Result word wrap to fit mobile view.
+
 ## [Beta 1.2] - 2023-09-24
 
 ### Added

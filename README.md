@@ -9,12 +9,13 @@
 - [Server Performance Notice](#server-performance-notice)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
 - [Contact](#contact)
 
 ## Description
 
 RootMaster is a web application that helps you find the roots of mathematical functions using various numerical methods. Whether you need to solve equations using the bisection method, Newton-Raphson method, or Muller's method, this calculator has you covered.
+
+Currently in Beta 1.3
 
 ## Changelog
 
@@ -43,10 +44,6 @@ We welcome contributions from the community! If you'd like to contribute to this
 - Create a new branch for your feature or bug fix.
 - Make your changes and test them.
 - Commit your changes and create a pull request.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Contact
 
