@@ -292,6 +292,7 @@ nav .nav-logo
 .main-container h3
 {
     text-align: center;
+    word-wrap: break-word;
 }
 
 .main-container input[type="submit"]
