@@ -1,6 +1,6 @@
 # RootMaster
 
-![RootMaster](./static/img/rootmaster-banner.jpg)
+![RootMaster](./api/static/img/rootmaster-banner.jpg)
 
 ## Table of Contents
 
@@ -21,15 +21,9 @@ Currently in Beta 1.3
 
 Check out our [Changelog](./CHANGELOG.md) to see what's new and improved in each release.
 
-## Server Performance Notice
-
-Please note that the calculator is hosted on a server that may experience slower performance if it hasn't been accessed in the last 5 minutes. This delay occurs because the server needs time to "wake up" and respond to incoming requests after a period of inactivity.
-
-If you encounter slow loading times, we recommend waiting for a moment as the server becomes responsive again. Subsequent requests should be faster.
-
 ## Usage
 
-1. Access the calculator on the web at [rootmaster.onrender.com](https://rootmaster.onrender.com/).
+1. Access the calculator on the web at [root-master.vercel.app](https://root-master.vercel.app/).
 2. Choose a numerical method from the available options in the menu (e.g., Bisection, Newton-Raphson).
 3. Enter a mathematical function in the input field.
 4. Set the initial parameters and precision (if applicable).

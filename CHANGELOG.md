@@ -6,6 +6,7 @@
 - **Mathe**: Library for operating with complex numbers
 
 ### Changed
+- Changed host from render to Vercel to improve app performance and availability.
 - Functions modified to accept Mathe library.
 
 ### Fixed
